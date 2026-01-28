@@ -12,9 +12,11 @@
 <style>
 
 :root {
---primary: #2563eb;
-  --primary-dark: #1e40af;
-  --bg: #f1f5f9;
+--primary: #9f1d1d;       
+--primary-dark: #7a1414;  
+
+  --bg: #eceff1;
+  
   --card: #ffffff;
   --border: #e5e7eb;
   --text: #0f172a;
@@ -45,6 +47,7 @@ h1 {
   width: 100%;
   background: var(--primary);
   color: white;
+
   border: none;
   padding: 16px 20px;
   font-size: 20px;
@@ -70,13 +73,18 @@ h1 {
 }
 
 .accordion-content {
-  display: none;
+  max-height: 0;
+  overflow: hidden;
+
   background: var(--card);
   border: 1px solid var(--border);
   border-top: none;
-  padding: 20px;
+  padding: 0 20px;
+
   border-radius: 0 0 8px 8px;
+  transition: max-height 0.3s ease, padding 0.2s ease;
 }
+
 
 h3 {
   margin-top: 16px;
@@ -130,6 +138,54 @@ ul {
     height: 35px;
   }
 }
+
+.image-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 24px 0;
+}
+.image-frame {
+  width: 100%;
+  max-width: 520px;  
+  height: 180px;      
+  margin: 20px auto;
+
+  border: 1px solid #cfd4d9;
+  border-radius: 12px;
+  background: #66666682;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* preenche sem distorcer */
+  display: block;
+}
+
+
+.image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+
+}
+@media (max-width: 600px) {
+ .image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+  .image-frame {
+    max-width: 100%;
+    height: 200px;
+  }
+}
+
 </style>
 </head>
 
@@ -148,11 +204,27 @@ ul {
     <span>▶</span>
   </button>
   <div class="accordion-content">
+    <h3>🔴SEGURANÇA EM PRIMEIRO LUGAR!</h3>
     <ul>
       <li>Utilize sempre todos os EPIs obrigatórios.</li>
       <li>Confirme a desenergização do circuito antes de iniciar o serviço.</li>
       <li>Sinalize corretamente a área de trabalho.</li>
-      <li>Jamais execute atividades sob efeito de fadiga excessiva.</li>
+      <li>Jamais execute atividades sob efeito de fadiga excessiva.</li> 
+      <div class="image-group">
+  <div class="image-frame">
+    <img src="epi.webp" alt="Exemplo 1">
+  </div>
+
+  <div class="image-frame">
+    <img src="epi2.jpg" alt="Exemplo 2">
+  </div>
+
+  <div class="image-frame">
+    <img src="epi3.png" alt="Exemplo 3">
+  </div>
+</div>
+
+
     </ul>
   </div>
 </div>
@@ -163,11 +235,25 @@ ul {
     <span>▶</span>
   </button>
   <div class="accordion-content">
+    <h3>🟢Para efetuar o trabalho com precisão:</h3>
     <ul>
       <li>Siga rigorosamente o procedimento padrão definido pela empresa.</li>
       <li>Leia a ordem de serviço antes de qualquer intervenção.</li>
       <li>Não improvise ferramentas ou métodos.</li>
       <li>Utilize somente materiais homologados.</li>
+      <div class="image-group">
+  <div class="image-frame">
+    <img src="listadetarefas.jpg" alt="Exemplo 1">
+  </div>
+
+  <div class="image-frame">
+    <img src="ferramentas.jpg" alt="Exemplo 2">
+  </div>
+
+  <div class="image-frame">
+    <img src="check.png" alt="Exemplo 3">
+  </div>
+</div>
     </ul>
   </div>
 </div>
@@ -178,12 +264,21 @@ ul {
     <span>▶</span>
   </button>
   <div class="accordion-content">
+
+    <h3>🟠Pontos essenciais:</h3>
     <ul>
       <li>Execute o serviço com atenção total.</li>
       <li>Revise conexões, apertos e isolamentos.</li>
       <li>Evite retrabalho realizando a conferência final.</li>
       <li>Mantenha organização e limpeza no local.</li>
+     
     </ul>
+    <p>🚨 Em todas as oportunidades de contato ou reciclagem das equipes, falar sobre a importância de: <br>
+1 - Qualidade das imagens; <br>
+2 - Campo de observação preenchido; <br>
+3 - Materiais utilizados e quantidades; <br>
+4 - Sincronização sempre que possível.
+</p>
   </div>
 </div>
 
@@ -193,25 +288,47 @@ ul {
     <span>▶</span>
   </button>
   <div class="accordion-content">
+    <h3>❗ATENÇÃO QUANTO AOS REGISTROS E EVIDÊNCIAS❗</h3>
+    <strong><p>OBRIGATÓRIO</p></strong>
+    <p>Acompanhar e revisar o serviço com base no sistema OPER, <strong>registrar o serviço feito e evidenciar</strong> no sistema JÚPITER (GPM)</p>
     <ul>
       <li>Comunique qualquer anomalia imediatamente.</li>
       <li>Registre corretamente o serviço executado (EVIDÊNCIAS).</li>
       <li>Informe dificuldades técnicas ao supervisor.</li>
+
     </ul>
   </div>
 </div>
 
 
 <script>
-document.querySelectorAll(".accordion-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const acc = btn.parentElement;
-    acc.classList.toggle("active");
-    const content = acc.querySelector(".accordion-content");
-    content.style.display = content.style.display === "block" ? "none" : "block";
+document.querySelectorAll('.accordion-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const accordion = btn.parentElement;
+    const content = accordion.querySelector('.accordion-content');
+    const arrow = btn.querySelector('.arrow');
+
+    const aberto = content.style.maxHeight;
+
+    
+    document.querySelectorAll('.accordion-content').forEach(c => {
+      c.style.maxHeight = null;
+      c.style.padding = '0 20px';
+    });
+    document.querySelectorAll('.arrow').forEach(a => {
+      a.style.transform = 'rotate(0deg)';
+    });
+
+   
+    if (!aberto) {
+      content.style.maxHeight = content.scrollHeight + 'px';
+      content.style.padding = '20px';
+      arrow.style.transform = 'rotate(90deg)';
+    }
   });
 });
 </script>
+
 
 <div class="footer-bar">
   <a
