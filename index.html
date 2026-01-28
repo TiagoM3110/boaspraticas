@@ -12,11 +12,11 @@
 <style>
 
 :root {
---primary: #9f1d1d;       /* vermelho corporativo */
---primary-dark: #7a1414;  /* hover */
+--primary: #2563eb;
+  --primary-dark: #1e40af;
 
   --bg: #eceff1;
-  /* cinza claro corporativo */
+ 
   --card: #ffffff;
   --border: #e5e7eb;
   --text: #0f172a;
@@ -47,7 +47,6 @@ h1 {
   width: 100%;
   background: var(--primary);
   color: white;
-
   border: none;
   padding: 16px 20px;
   font-size: 20px;
@@ -72,26 +71,38 @@ h1 {
   transform: rotate(90deg);
 }
 
+
 .accordion-content {
   max-height: 0;
   overflow: hidden;
-
   background: var(--card);
   border: 1px solid var(--border);
   border-top: none;
   padding: 0 20px;
-
   border-radius: 0 0 8px 8px;
   transition: max-height 0.3s ease, padding 0.2s ease;
 }
 
-
-h3 {
-  margin-top: 16px;
+.accordion.active .accordion-content {
+  max-height: 500px; 
+  padding: 16px 20px;
 }
 
-ul {
-  margin-left: 20px;
+/* BOTÕES/LINKS */
+.accordion-link {
+  display: block;
+  padding: 12px;
+  margin-bottom: 10px;
+  background: #222222dd;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.accordion-link:hover {
+  background: #2563eb;
 }
 
 /* ===== TOPO ===== */
@@ -108,7 +119,7 @@ ul {
 .top-bar img {
   height: 45px;
   max-width: 45%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 /* ===== RODAPÉ ===== */
@@ -154,20 +165,20 @@ ul {
   border: 1px solid #cfd4d9;
   border-radius: 12px;
   background: #e5e7eb;
-  overflow: hidden; /* ESSENCIAL */
+  overflow: hidden; 
 }
 
 .image-frame img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: contain; 
   display: block;
 }
 
 /* 📱 CELULAR */
 @media (max-width: 768px) {
   .image-group {
-    grid-template-columns: 1fr; /* UMA imagem por linha */
+    grid-template-columns: 1fr; 
   }
 
   .image-frame {
@@ -175,13 +186,78 @@ ul {
   }
 }
 
-.image-frame img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: contain !important;
-  object-position: center !important;
-  display: block !important;
+:root {
+ --primary: #2563eb;
+  --primary-dark: #1e40af;
 }
+
+.prod-bar {
+  display: grid;
+  grid-template-columns: auto 1fr; /* título | área dos botões */
+  align-items: center;
+  background: var(--primary);
+  padding: 16px 20px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+
+.prod-title {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+
+.prod-actions {
+  display: flex;
+  justify-content: center;  
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.prod-btn {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  text-align: center;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.prod-btn:hover {
+  background-color: rgba(255, 255, 255, 0.32);
+  transform: translateY(-1px);
+}
+
+
+@media (max-width: 768px) {
+  .prod-bar {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    text-align: center;
+  }
+
+  .prod-actions {
+    justify-content: center;
+  }
+
+  .prod-btn {
+    width: 100%;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 800px)
+ { 
+  .image-grid { display: flex; flex-direction: column; gap: 20px; width: 100%; } 
+   .image-frame { width: 100%; max-width: 100%; height: 260px; margin: 0; }
+    .image-frame img { width: 100%; height: 100%; object-fit: cover; display: block; } }
+
 
 
 
@@ -197,6 +273,32 @@ ul {
 
 <h1>Boas Práticas</h1>
 
+<div class="prod-bar">
+
+  <div class="prod-title">
+    Produtividade
+  </div>
+
+  <div class="prod-actions">
+    <a href="https://t.me/+QnYydqiQ5lQ2NTkx" target="_blank" class="prod-btn">
+      📊 PRODUTIVIDADE EM TEMPO REAL
+    </a>
+
+    <a href="https://app.powerbi.com/reportEmbed?reportId=be208a87-4669-4b5a-afa2-4aaa7514801c&autoAuth=true&ctid=cefe151e-6a50-49bd-babe-57f86efc10eb&navContentPaneEnabled=false&filterPaneEnabled=false"
+       target="_blank" class="prod-btn">
+      📈 INDICADOR ANS
+    </a>
+
+    <a href="https://app.powerbi.com/groups/me/reports/faec5e6c-c442-4ebc-8396-d4d759cab4d8/70dd496bc2498e6bb8e3?ctid=cefe151e-6a50-49bd-babe-57f86efc10eb&experience=power-bi"
+       target="_blank" class="prod-btn">
+      ⚙️ INDICADOR DE PRODUTIVIDADE
+    </a>
+  </div>
+
+</div>
+
+
+
 <div class="accordion">
   <button class="accordion-btn">
     Segurança Antes de Qualquer Atividade
@@ -205,10 +307,12 @@ ul {
   <div class="accordion-content">
     <h3>🔴SEGURANÇA EM PRIMEIRO LUGAR!</h3>
     <ul>
-      <li>Utilize sempre todos os EPIs obrigatórios.</li>
-      <li>Confirme a desenergização do circuito antes de iniciar o serviço.</li>
-      <li>Sinalize corretamente a área de trabalho.</li>
-      <li>Jamais execute atividades sob efeito de fadiga excessiva.</li> 
+      <li>1️⃣ SECCIONAR</li>
+      <li>2️⃣ IMPEDIR REENERGIZAÇÃO</li>
+      <li>3️⃣ CONSTATAR AUSÊNCIA DE TENSÃO</li>
+      <li>4️⃣ INSTALAR ATERRAMENTO</li> 
+      <li>5️⃣ PROTEGER</li>
+      <li>6️⃣ INSTALAR SINALIZAÇÃO</li>
       <div class="image-group">
   <div class="image-frame">
     <img src="epi.webp" alt="Exemplo 1">
@@ -234,12 +338,12 @@ ul {
     <span>▶</span>
   </button>
   <div class="accordion-content">
-    <h3>🟢Para efetuar o trabalho com precisão:</h3>
+  <h3>🟢Para efetuar o trabalho com precisão:</h3>
     <ul>
-      <li>Siga rigorosamente o procedimento padrão definido pela empresa.</li>
-      <li>Leia a ordem de serviço antes de qualquer intervenção.</li>
+      <li>Siga rigorosamente os POP's.</li>
+      <li>Leia a ordem de serviço antes de qualquer intervenção!</li>
       <li>Não improvise ferramentas ou métodos.</li>
-      <li>Utilize somente materiais homologados.</li>
+      <li>Na dúvida procure seu supervisor/Líder imediato</li>
       <div class="image-group">
   <div class="image-frame">
     <img src="listadetarefas.jpg" alt="Exemplo 1">
@@ -268,8 +372,8 @@ ul {
     <ul>
       <li>Execute o serviço com atenção total.</li>
       <li>Revise conexões, apertos e isolamentos.</li>
-      <li>Evite retrabalho realizando a conferência final.</li>
-      <li>Mantenha organização e limpeza no local.</li>
+      <li>Evite retrabalho, ATENÇÃO A EQUIPAMENTOS REINCIDENTES.</li>
+      <li>Mantenha organização e limpeza no VEÍCULO.</li>
      
     </ul>
     <p>🚨 Em todas as oportunidades de contato ou reciclagem das equipes, falar sobre a importância de: <br>
@@ -287,13 +391,13 @@ ul {
     <span>▶</span>
   </button>
   <div class="accordion-content">
-    <h3>❗ATENÇÃO QUANTO AOS REGISTROS E EVIDÊNCIAS❗</h3>
+   <h3>❗ATENÇÃO QUANTO AOS REGISTROS E EVIDÊNCIAS❗</h3>
     <strong><p>OBRIGATÓRIO</p></strong>
-    <p>Acompanhar e revisar o serviço com base no sistema OPER, <strong>registrar o serviço feito e evidenciar</strong> no sistema JÚPITER (GPM)</p>
+    <p>Acompanhar e revisar o serviço com base no sistema OPER/JUPITER, <strong>registrar o serviço feito e evidenciar</strong> no sistema JÚPITER (GPM)</p>
     <ul>
-      <li>Comunique qualquer anomalia imediatamente.</li>
+      <li>Identificado falha da equipe ou insuficiência de evidências que comprovem a execução do serviço, contatar e reciclar imediamente a equipe.</li>
       <li>Registre corretamente o serviço executado (EVIDÊNCIAS).</li>
-      <li>Informe dificuldades técnicas ao supervisor.</li>
+      <li>Informe dificuldades técnicas ou dúvidas supervisor! NÃO SOFRA CALADO! as vezes sua dúvida é uma oportunidade no setor e nos processos</li>
 
     </ul>
   </div>
